@@ -6,7 +6,7 @@ import Words from "./components/Words";
 import {words} from './wordList'
 
 function App() {
-  const [start,setStart]=useState(false);
+  const [start,setStart]=useState(true);
   const [tries,setTries]=useState(0);
   const [wordToGuess,setWordToGuess]=useState<string[]>([])
   const [finalWord,setFinalWord]=useState('')
@@ -17,6 +17,7 @@ function App() {
     setStart(false)
     const newWord=words[Math.floor(Math.random()*words.length)]
     setFinalWord(newWord)
+    setCount(0)
     const newArr=Array(newWord.length).join('.').split('.')
     setWordToGuess(newArr)
     setStatus('')
@@ -34,7 +35,7 @@ function App() {
       if(tries>4){
         setStatus(`You LOST! Word was '${finalWord.toUpperCase()}'`)
         setStart(true)
-        setCount(0)
+        
       }
     }
   }
