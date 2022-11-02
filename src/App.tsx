@@ -47,10 +47,12 @@ function App() {
     }
   },[wordToGuess])
   return (
-    <div className="text-center">
+    <div className="text-center relative">
+        <div className="absolute top-2 left-2 text-xl font-bold">{count}</div>
         <Status status={status} count={count} Start={Start} start={start}/>
         <Hangman tries={tries}/> 
         <Words wordToGuess={wordToGuess}/>
+        <Keyboard guess={guess} start={start}/>
     </div>
   );
 }
