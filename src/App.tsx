@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Hangman from "./components/Hangman";
 import Status from "./components/Status";
+import Words from "./components/Words";
 import {words} from './wordList'
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
   return (
     <div className="text-center">
         <Status status={status} count={count} Start={Start} start={start}/>
-        <Hangman tries={tries}/>  
+        <Hangman tries={tries}/> 
+        <Words wordToGuess={wordToGuess}/>
     </div>
   );
 }
