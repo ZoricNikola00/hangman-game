@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Hangman from "./components/Hangman";
 
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
   const [count,setCount]=useState(0)
   return (
     <div className="text-center">
-            
+        <Hangman tries={tries}/>  
     </div>
   );
 }
