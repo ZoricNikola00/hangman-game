@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Hangman from "./components/Hangman";
+import Keyboard from "./components/Keyboard";
 import Status from "./components/Status";
 import Words from "./components/Words";
 import {words} from './wordList'
@@ -20,6 +21,31 @@ function App() {
     setWordToGuess(newArr)
     setStatus('')
   }
+
+  const guess=(letter:string)=>{
+    if(finalWord.split('').includes(letter)){
+      setWordToGuess((p:string[])=>{
+        let index:number[]=[]
+        finalWord.split('').map((x,i)=>x===letter?index.push(i):x)
+        return p.map((x,i)=>index.includes(i)?x=letter:x)
+      })
+    }else{
+      setTries(p=>p+1)
+      if(tries>4){
+        setStatus(`You LOST! Word was '${finalWord.toUpperCase()}'`)
+        setStart(true)
+        setCount(0)
+      }
+    }
+  }
+
+  useEffect(()=>{
+    if(wordToGuess.every(x=>x!=='') && !start){
+      setStatus('You WON!')
+      setStart(true)
+      setCount(p=>p+1)
+    }
+  },[wordToGuess])
   return (
     <div className="text-center">
         <Status status={status} count={count} Start={Start} start={start}/>
