@@ -63,7 +63,7 @@ function App() {
   },[wordToGuess])
   return (
     <div className="text-center relative">
-        <div className="absolute top-2 left-2 text-xl font-bold">{count}<button className="mx-2 px-2 py-1 rounded-xl bg-yellow-500" onClick={()=>setShowInfo(true)}>HINT</button></div>
+        <div className="z-30 absolute top-2 left-2 text-xl font-bold">{count}<button className="mx-2 px-2 py-1 rounded-xl bg-yellow-500" onClick={()=>setShowInfo(true)}>HINT</button></div>
         <Info data={data} showInfo={showInfo} setShowInfo={setShowInfo} />
         <Status status={status} count={count} Start={Start} start={start}/>
         <Hangman tries={tries}/> 
